@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Store</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="app">
+    <header class="hero-header">
+      <div class="top-bar">
+        <div class="brand">
+          <span class="logo">📚</span>
+          <div>
+            <h1>The Book Store</h1>
+            <p>Great reads, carefully selected.</p>
+          </div>
+        </div>
+      </div>
+      <p class="hero-subtitle">
+        Discover books that inspire, teach, and transport you.
+      </p>
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-target="home">Home</button>
+        <button class="tab-btn" data-target="books">Books</button>
+        <button class="tab-btn" data-target="authors">Authors</button>
+        <button class="tab-btn" data-target="genres">Genres</button>
+      </div>
+    </header>
 
+    <main class="main-content">
+      <section id="home" class="card tab-panel">
+        <h2>Welcome</h2>
+        <p class="section-intro">
+          Explore our curated collection of novels, nonfiction, and business books.
+        </p>
+        <ul class="home-list">
+          <li><strong>Books:</strong> Popular titles with quick details.</li>
+          <li><strong>Authors:</strong> Classic and modern names.</li>
+          <li><strong>Genres:</strong> Find your next read by mood and style.</li>
+        </ul>
+      </section>
+
+      <section id="books" class="card tab-panel" style="display:none;">
+        <div class="section-head">
+          <h2>Books</h2>
+          <span class="pill">4 books</span>
+        </div>
+        <div class="cards-grid">
+          <article class="book-card">
+            <h3>Deep Work</h3>
+            <p><strong>Author:</strong> Cal Newport</p>
+            <p><strong>Genre:</strong> Productivity / Non-fiction</p>
+            <p><strong>Year:</strong> 2016</p>
+            <p><strong>Summary:</strong> A practical approach to focus and meaningful output.</p>
+          </article>
+          <article class="book-card">
+            <h3>Sapiens</h3>
+            <p><strong>Author:</strong> Yuval Noah Harari</p>
+            <p><strong>Genre:</strong> History / Essay</p>
+            <p><strong>Year:</strong> 2011</p>
+            <p><strong>Summary:</strong> A big-picture story of humanity and culture.</p>
+          </article>
+          <article class="book-card">
+            <h3>Le Petit Prince</h3>
+            <p><strong>Author:</strong> Antoine de Saint-Exupéry</p>
+            <p><strong>Genre:</strong> Fiction / Allegory</p>
+            <p><strong>Year:</strong> 1943</p>
+            <p><strong>Summary:</strong> A tender, poetic fable about life and friendship.</p>
+          </article>
+          <article class="book-card">
+            <h3>The Alchemist</h3>
+            <p><strong>Author:</strong> Paulo Coelho</p>
+            <p><strong>Genre:</strong> Fiction / Spiritual</p>
+            <p><strong>Year:</strong> 1988</p>
+            <p><strong>Summary:</strong> A young traveler pursues his destiny on a magical journey.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="authors" class="card tab-panel" style="display:none;">
+        <h2>Authors</h2>
+        <div class="info-grid">
+          <div class="info-card"><p>J.K. Rowling</p></div>
+          <div class="info-card"><p>Agatha Christie</p></div>
+          <div class="info-card"><p>George Orwell</p></div>
+          <div class="info-card"><p>Jane Austen</p></div>
+        </div>
+      </section>
+
+      <section id="genres" class="card tab-panel" style="display:none;">
+        <h2>Genres</h2>
+        <div class="info-grid">
+          <div class="info-card"><p>Fiction</p></div>
+          <div class="info-card"><p>Science-fiction</p></div>
+          <div class="info-card"><p>Fantasy</p></div>
+          <div class="info-card"><p>Self Improvement</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        panels.forEach(panel => {
+          panel.style.display = panel.id === btn.dataset.target ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
